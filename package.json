@@ -9,7 +9,9 @@
     "@material-ui/core": "^4.12.4",
     "axios": "^1.6.8",
     "express": "^4.19.2",
-    "react-loader-spinner": "^6.1.6"
+    "react-loader-spinner": "^6.1.6",
+    "react-router-dom": "^6.23.1",
+    "react-swipeable": "^7.0.1"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

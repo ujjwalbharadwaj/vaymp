@@ -53,6 +53,10 @@ const ProductDetails = ({ data }) => {
   //   }
   // };
 
+  const handleImageClick = (index) => {
+    navigate(`/image/${index}`);
+  };
+
   const removeFromWishlistHandler = (data) => {
     setClick(!click);
     dispatch(removeFromWishlist(data));
@@ -248,8 +252,9 @@ const ProductDetails = ({ data }) => {
                 <img
                   src={`${data && data.images[select]?.url}`}
                   alt=""
-                  className="w-full sm:w-[80%] mx-auto border border-gray-300 m-3 p-1 rounded transition-transform duration-300 hover:scale-150 hover:cursor-zoom-in"
+                  className="w-full sm:w-[80%] mx-auto border border-gray-300 m-3 p-1 rounded"
                   style={{ transitionDelay: "800ms" }}
+                  onClick={() => handleImageClick(select)}
                 />
                 <div className="w-full flex p-2 py-0 lg:pl-12">
                   {data &&
