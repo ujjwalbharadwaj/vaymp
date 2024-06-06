@@ -43,8 +43,7 @@ router.post(
 
         // Update stock for each item in the shop's cart
         for (const item of cart) {
-          // console.log("item",item)
-
+          //  console.log("item",item)
           await updateStockAfterOrderCreation(item); // Pass individual item to updateStockAfterOrderCreation
         }
       }
@@ -62,7 +61,7 @@ router.post(
 // Function to update stock after order creation
 async function updateStockAfterOrderCreation(item) {
   const productId = item._id;
-  const newStock = item.stock; // Assuming item.stock contains the updated stock array
+  const newStock = JSON.parse(JSON.stringify(item.stock)); // Assuming item.stock contains the updated stock array
   // console.log("newStock", newStock);
 
   try {
@@ -72,9 +71,9 @@ async function updateStockAfterOrderCreation(item) {
         //stockItem.quantity -= stockItem.qty; // Update the quantity based on item.qty
         stockItem.isSelected = false; // Set isSelected to false after updating stock
         stockItem.qty = 0; // Reset qty to 0
-
+  
         // Make HTTP PUT request to update stock using Axios
-        const response = await axios.patch(`https://localhost:8000/api/v2/product/update-stock/${productId}`, {
+        const response = await axios.patch(`http://localhost:8000/api/v2/product/update-stock/${productId}`, {
           stock: newStock, // Update the stock value in the request body
         });
 
@@ -113,7 +112,7 @@ async function updateStockCancel(item,size) {
         stockItem.qty -= 1; // Reset qty to 0
 
         // Make HTTP PUT request to update stock using Axios
-        const response = await axios.patch(`https://localhost:8000/api/v2/product/update-stock/${productId}`, {
+        const response = await axios.patch(`http://localhost:8000/api/v2/product/update-stock/${productId}`, {
           stock: newStock, // Update the stock value in the request body
         });
 
